@@ -1,12 +1,19 @@
 package pages;
 
+import maps.CurriculumMap;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CurriculumPage {
     private WebDriver driver;
+    private CurriculumMap curriculumMap;
 
     public CurriculumPage(WebDriver driver){
         this.driver = driver;
+        curriculumMap = new CurriculumMap();
+        PageFactory.initElements(driver, curriculumMap);
     }
 
     public String getUrlCurriculum() {
@@ -17,30 +24,20 @@ public class CurriculumPage {
     public void telefone() {
         String xpathTelefone = "//div[2]/div[2]/div[1]/div/div/div/input";
         WebElement inputTelefone = driver.findElement(By.xpath(xpathTelefone));
-        inputTelefone.clear();
         inputTelefone.click();
         inputTelefone.sendKeys("11985693625");
     }
 
     public void email() {
-        String xpathEmail = "//div[2]/div[3]//input";
-        WebElement inputEmail = driver.findElement(By.xpath(xpathEmail));
-        inputEmail.clear();
-        inputEmail.sendKeys("luiz@teste.com");
+        curriculumMap.inputEmail.sendKeys("luiz@teste.com");
     }
 
     public void confirmarEmail() {
-        String xpathConfirmarEmail = "//div[2]/div[4]//input";
-        WebElement inputConfirmaEmail = driver.findElement(By.xpath(xpathConfirmarEmail));
-        inputConfirmaEmail.clear();
-        inputConfirmaEmail.sendKeys("luiz@teste.com");
+        curriculumMap.inputConfirmaEmail.sendKeys("luiz@teste.com");
     }
 
     public void nomeCompleto() {
-        String xpathNomeCompleto = "//main/div/div/div[1]/div/div[3]/div[2]/div[1]/div[1]//input";
-        WebElement inputNomeCompleto = driver.findElement(By.xpath(xpathNomeCompleto));
-        inputNomeCompleto.clear();
-        inputNomeCompleto.sendKeys("Luiz Teste");
+        curriculumMap.inputNomeCompleto.sendKeys("Luiz Teste");
     }
 
     public void genero() {
@@ -57,20 +54,16 @@ public class CurriculumPage {
         js.executeScript("arguments[0].setAttribute('strictparsing', 'false');", dataNasc);
         //js.executeScript("arguments[0].setAttribute('value', '01/01/1990');", dataNasc);
         dataNasc.sendKeys("01/01/1991" + Keys.TAB);
-        System.out.println("Teste");
-        int a = 0;
-
     }
 
     public void video() {
-        String xpathLinkVideo = "//*[@id='tip03']/div[5]/div[1]/div/div/div/input";
-        WebElement inputLinkVideo = driver.findElement(By.xpath(xpathLinkVideo));
-        inputLinkVideo.sendKeys("https://www.youtube.com/watch?v=cwV12y7n3Jw");
+        curriculumMap.inputLinkVideo.sendKeys("https://www.youtube.com/watch?v=cwV12y7n3Jw");
     }
 
     public void btnSalvarDados() {
         String xpathSalvarDados = "//div[2]/div[2]/button/div";
-        WebElement btnSalvarDados = driver.findElement(By.xpath(xpathSalvarDados));
+        WebDriverWait waitSalvarDados = new WebDriverWait(driver, 20);
+        WebElement btnSalvarDados = waitSalvarDados.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathSalvarDados)));
         btnSalvarDados.click();
     }
 

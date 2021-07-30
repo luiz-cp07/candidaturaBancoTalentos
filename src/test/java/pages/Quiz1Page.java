@@ -1,22 +1,25 @@
 package pages;
 
+import maps.Quiz1Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
 public class Quiz1Page {
     private WebDriver driver;
+    private Quiz1Map quiz1Map;
 
 
     public Quiz1Page(WebDriver driver){
         this.driver = driver;
+        quiz1Map = new Quiz1Map();
+        PageFactory.initElements(driver, quiz1Map);
     }
 
     public String getQuestionario1() {
-        String xpathQuestionario1 ="//*[@id='container_pdf']//div[2]/span[2]";
-        WebElement txtQuestionario1 = driver.findElement(By.xpath(xpathQuestionario1));
-        return txtQuestionario1.getText();
+        return quiz1Map.txtQuestionario1.getText();
     }
 
     public void independente() {
@@ -55,9 +58,7 @@ public class Quiz1Page {
     }
 
     public void btnProximaEtapa() {
-        String xpathProximaEtapa = "//div[3]/button/div";
-        WebElement btnProximaEtapa = driver.findElement(By.xpath(xpathProximaEtapa));
-        btnProximaEtapa.click();
+        quiz1Map.btnProximaEtapa.click();
     }
 
 }

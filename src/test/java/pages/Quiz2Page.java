@@ -1,21 +1,24 @@
 package pages;
 
+import maps.Quiz2Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
 public class Quiz2Page {
     private WebDriver driver;
+    private Quiz2Map quiz2Map;
 
     public Quiz2Page(WebDriver driver){
         this.driver = driver;
+        quiz2Map = new Quiz2Map();
+        PageFactory.initElements(driver, quiz2Map);
     }
 
     public String getQuestionario2() {
-        String xpathQuestionario2 = "//*[@id='container_pdf']//span[3]";
-        WebElement txtQuestionario2 = driver.findElement(By.xpath(xpathQuestionario2));
-        return txtQuestionario2.getText();
+        return quiz2Map.txtQuestionario2.getText();
     }
 
     public void compreensivo() {
@@ -54,9 +57,7 @@ public class Quiz2Page {
     }
 
     public void btnSalvarCandidatar() {
-        String xpathSalvarCandidatar= "//div[3]/button/div";
-        WebElement btnSalvarCandidatar = driver.findElement(By.xpath(xpathSalvarCandidatar));
-        btnSalvarCandidatar.click();
+        quiz2Map.btnSalvarCandidatar.click();
     }
 
 }

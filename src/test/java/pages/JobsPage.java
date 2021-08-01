@@ -18,10 +18,9 @@ public class JobsPage {
         PageFactory.initElements(driver, jobsMap);
     }
 
-    public void aceitarCookies() {
+     public void aceitarCookies() {
         String xpathCookies = "/html/body/div[1]/div/div[2]/button/div";
-        WebDriverWait waitCookies = new WebDriverWait(driver, 10);
-        WebElement cookies = waitCookies.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathCookies)));
+        WebElement cookies = driver.findElement(By.xpath(xpathCookies));
         cookies.click();
     }
 

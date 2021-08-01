@@ -4,6 +4,8 @@ import core.Driver;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.*;
 
 import java.util.concurrent.TimeUnit;

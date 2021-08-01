@@ -20,11 +20,11 @@ public class LoginPage {
     }
 
     public void usuario() {
-        loginMap.inputUsuario.sendKeys("luiz@teste.com");
+        loginMap.inputUsuario.sendKeys("luiz02@teste.com");
     }
 
     public void senha() {
-        loginMap.inputSenha.sendKeys("luiz@123");
+        loginMap.inputSenha.sendKeys("luiz02@123");
     }
 
     public void btnEntrar() {
